@@ -32,7 +32,7 @@ const Home = () => {
 
       <Header screenWidth={screenWidth} />
       <BannerSection />
-      <GameLogo />
+      <GameLogo screenWidth={screenWidth} />
       <AboutSection screenWidth={screenWidth} />
       <TournamentSection screenWidth={screenWidth} />
       <NftCreationSection />

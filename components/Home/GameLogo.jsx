@@ -1,14 +1,13 @@
 import Image from "next/image";
-import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/outline';
+import Carousel from "./Carousel";
 
-const GameLogo = () => {
-
+const GameLogo = ({ screenWidth }) => {
     return (
         <section className="flex items-center justify-between bg-quinary px-20px sm:px-50px 2xl:px-90px pt-60px pb-50px lg:pt-150px lg:pb-73px space-x-34px lg:space-x-50px 2xl:space-x-62.4px">
-            <ChevronLeftIcon className="text-white w-90px h-90px" />
-            <div className="flex items-center justify-between flex-grow space-x-34px lg:space-x-50px">
-                <div>
+            <Carousel show={screenWidth > 1024 ? 5 : 3}>
+                <div className="flex items-center justify-center">
                     <Image
+                        className="w-full"
                         src="/pubg-1 1.png"
                         width={130}
                         height={76}
@@ -16,8 +15,9 @@ const GameLogo = () => {
                         alt="pubg"
                     />
                 </div>
-                <div>
+                <div className="flex items-center justify-center">
                     <Image
+                        className="w-full"
                         src="/download-destiny-logo-3400 1.png"
                         width={316}
                         height={73}
@@ -25,8 +25,9 @@ const GameLogo = () => {
                         alt="download-destiny-logo-3400 1"
                     />
                 </div>
-                <div>
+                <div className="flex items-center justify-center">
                     <Image
+                        className="w-full"
                         src="/escape_from_tarkov_PNG17 1.png"
                         width={210}
                         height={94}
@@ -34,8 +35,9 @@ const GameLogo = () => {
                         alt="escape_from_tarkov_PNG17 1"
                     />
                 </div>
-                <div>
+                <div className="flex items-center justify-center">
                     <Image
+                        className="w-full"
                         src="/apex-legends-logo 1.png"
                         width={122}
                         height={92}
@@ -43,8 +45,9 @@ const GameLogo = () => {
                         alt="apex-legends-logo 1"
                     />
                 </div>
-                <div>
+                <div className="flex items-center justify-center">
                     <Image
+                        className="w-full"
                         src="/call-of-duty 1.png"
                         width={255}
                         height={50}
@@ -52,8 +55,17 @@ const GameLogo = () => {
                         alt="call_of_duty"
                     />
                 </div>
-            </div>
-            <ChevronRightIcon className="w-90px h-90px text-tertiary" />
+                <div className="flex items-center justify-center">
+                    <Image
+                        className="w-full"
+                        src="/escape_from_tarkov_PNG17 1.png"
+                        width={210}
+                        height={94}
+                        objectFit="contain"
+                        alt="escape_from_tarkov_PNG17 1"
+                    />
+                </div>
+            </Carousel>
         </section>
     )
 }

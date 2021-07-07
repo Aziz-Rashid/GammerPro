@@ -39,7 +39,7 @@ const HowDoesItWork = ({ screenWidth }) => {
                         <div className="relative overflow-y-hidden text-center text-white -mt-43px xl:w-520px xl:h-556px bg-gradient-to-b from-denary to-duodenary px-20px lg:px-57px pt-63px">
                             <h4 className="font-semibold font-jost text-25px 2xl:text-30pxl">Buy Token Here</h4>
                             <p className="text-14px 2xl:text-18px mt-7.37px">Battle against the rest of the world with your favorite crypto projects and characters</p>
-                            <div className="flex overflow-hidden mt-18px">
+                            <div className="flex justify-center overflow-hidden mt-18px">
                                 <Image
                                     src="/avatar.png"
                                     width={199}
@@ -47,13 +47,24 @@ const HowDoesItWork = ({ screenWidth }) => {
                                     objectFit="contain"
                                     alt="avatar"
                                 />
-                                <Image
-                                    src="/coin.png"
-                                    width={130}
-                                    height={120}
-                                    objectFit="contain"
-                                    alt="coin"
-                                />
+                                <div className="relative my-auto">
+                                    <div className="absolute z-20 top-7 lg:top-5 lg:left-7 xl:left-8 xl:top-7 left-8">
+                                        <Image
+                                            src="/black_logo.svg"
+                                            width={60.17}
+                                            height={45.99}
+                                            objectFit="cover"
+                                            alt="black_logo"
+                                        />
+                                    </div>
+                                    <Image
+                                        src="/coin.png"
+                                        width={130}
+                                        height={120}
+                                        objectFit="contain"
+                                        alt="coin"
+                                    />
+                                </div>
                             </div>
                             <div className="absolute bottom-0 left-0 z-10 w-full h-220px bg-gradient-to-b from-transparent to-vigenary"></div>
                         </div>
