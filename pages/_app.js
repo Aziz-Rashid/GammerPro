@@ -14,9 +14,7 @@ import { AssetsProvider } from "../context/AssetsContext";
 function App({ Component, pageProps }) {
   return (
     <Web3Provider>
-      <AssetsProvider>
         <Component {...pageProps} />
-      </AssetsProvider>
     </Web3Provider>
   )
 }

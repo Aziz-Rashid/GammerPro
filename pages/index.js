@@ -11,8 +11,7 @@ import RoadMapSection from "../components/Home/RoadMapSection";
 import IndustrySection from "../components/Home/IndustrySection";
 import Footer from "../components/Home/Footer";
 import { Web3Context } from "../context/Web3ContexT";
-import { AssetsContext } from "../context/AssetsContext";
-
+import Web3 from "web3";
 const Home = () => {
   const [screenWidth, setScreenWidth] = useState(0);
   const [web3State, setWeb3State] = useContext(Web3Context);
@@ -31,7 +30,7 @@ const Home = () => {
       if (typeof accounts[0] !== "undefined") {
         web3StateObj.authenticated = true;
         web3StateObj.account = accounts[0];
-        router.push("/");
+        // router.push("/");
         const balance = await web3.eth.getBalance(accounts[0]);
         // console.log(web3.utils.fromWei(balance));
       } else {
@@ -41,7 +40,7 @@ const Home = () => {
       window.alert("Get MetaMask !");
     }
     setWeb3State(web3StateObj);
-    return setLoading(false);
+    return "Loading...";
   };
   useEffect(() => {
     if (!web3State.authenticated) {
