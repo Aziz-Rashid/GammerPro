@@ -7,6 +7,7 @@ const BannerSection = () => {
 console.log(web3State)
     const loadMetaMaskData = async () => {
         if (!web3State.authenticated) {
+            console.log("working")
             const web3StateObj = {};
             if (typeof (window).ethereum) {
               const ethWindow = (window).ethereum;
@@ -42,9 +43,11 @@ console.log(web3State)
                     <span className="text-light-green">Collect Free NFT</span>
                 </div>
                 <p className="hidden text-white text-14px lg:text-16px md:block 2xl:text-30px w-520px lg:w-735px 2xl:w-957px mt-20px lg:mt-38px mb-32px lg:mb-46px">Publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual</p>
-                <Link href="/" onClick={() => loadMetaMaskData()}>
+                <div onClick={() => loadMetaMaskData()} >
+                <Link href="/" >
                     <a style={{background:'#f8ac30'}} className="items-center justify-center hidden font-medium text-white md:flex h-50px w-150px 2xl:h-70px 2xl:w-232px 2xl:text-20px  rounded-5px">Buy Tokens</a>
                 </Link>
+                </div>
             </div>
         </section>
     )
