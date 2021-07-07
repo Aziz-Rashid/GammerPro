@@ -51,7 +51,7 @@ const Header = ({ screenWidth }) => {
                         {navItem.map((item, index) => <li key={index}><Link href={item.link}><a>{item.title}</a></Link></li>)}
                     </ul>
                     <Link href="/">
-                        <a className="flex items-center justify-center font-medium text-white h-50px w-150px 2xl:h-70px 2xl:w-232px xl:text-16px 2xl:text-20px bg-primary rounded-5px">Contact Us</a>
+                        <a style={{background:'#f8ac30'}} className="flex items-center justify-center font-medium text-white h-50px w-150px 2xl:h-70px 2xl:w-232px xl:text-16px 2xl:text-20px rounded-5px">Buy Token</a>
                     </Link>
                 </div>
                 {/* Small devices */}
