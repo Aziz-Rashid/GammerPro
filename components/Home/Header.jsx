@@ -1,12 +1,48 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef,useContext } from "react";
 import { MenuIcon, XIcon } from '@heroicons/react/solid'
 import { navItem } from "./data";
+import { Web3Context } from "../../context/Web3ContexT";
+
 
 const Header = ({ screenWidth }) => {
     const [showMenu, setShowMenu] = useState(false);
     const ref = useRef();
+
+    const [web3State, setWeb3State] = useContext(Web3Context);
+
+    const loadMetaMaskData = async () => {
+      const web3StateObj = {};
+      if (typeof (window).ethereum) {
+        const ethWindow = (window).ethereum;
+        await ethWindow.send("eth_requestAccounts");
+        const web3 = new Web3(ethWindow);
+        web3StateObj.web3 = web3;
+        const chain_id = await web3.eth.net.getId();
+        web3StateObj.chain_id = chain_id;
+        const accounts = await web3.eth.getAccounts();
+        // If the investor has an account on his MetaMask, then proceeds
+        if (typeof accounts[0] !== "undefined") {
+          web3StateObj.authenticated = true;
+          web3StateObj.account = accounts[0];
+          router.push("/");
+          const balance = await web3.eth.getBalance(accounts[0]);
+          // console.log(web3.utils.fromWei(balance));
+        } else {
+          web3StateObj.authenticated = false;
+        }
+      } else {
+        window.alert("Get MetaMask !");
+      }
+      setWeb3State(web3StateObj);
+      return setLoading(false);
+    };
+    // useEffect(() => {
+    //   if (!web3State.authenticated) {
+    //     loadMetaMaskData();
+    //   }
+    // }, []);
 
     const useOnClickOutside = (ref, handler) => {
         useEffect(
@@ -48,9 +84,9 @@ const Header = ({ screenWidth }) => {
                 />
                 <div className="items-center hidden space-x-34px 2xl:space-x-50px lg:flex">
                     <ul className="flex items-center justify-center font-medium text-white text-16px 2xl:text-20px space-x-32px 2xl:space-x-46px">
-                        {navItem.map((item, index) => <li key={index}><Link href={item.link}><a>{item.title}</a></Link></li>)}
+                        {navItem.map((item, index) => <li key={index}><Link href={item.link} onClick={() => item.title == "Wallet" ? loadMetaMaskData() : null}><a>{item.title}</a></Link></li>)}
                     </ul>
-                    <Link href="/">
+                    <Link href="/" onClick={() => loadMetaMaskData()}>
                         <a style={{background:'#f8ac30'}} className="flex items-center justify-center font-medium text-white h-50px w-150px 2xl:h-70px 2xl:w-232px xl:text-16px 2xl:text-20px rounded-5px">Buy Token</a>
                     </Link>
                 </div>

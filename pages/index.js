@@ -10,44 +10,10 @@ import HowDoesItWork from "../components/Home/HowDoesItWork";
 import RoadMapSection from "../components/Home/RoadMapSection";
 import IndustrySection from "../components/Home/IndustrySection";
 import Footer from "../components/Home/Footer";
-import { Web3Context } from "../context/Web3ContexT";
-import { AssetsContext } from "../context/AssetsContext";
 
 const Home = () => {
   const [screenWidth, setScreenWidth] = useState(0);
-  const [web3State, setWeb3State] = useContext(Web3Context);
-
-  const loadMetaMaskData = async () => {
-    const web3StateObj = {};
-    if (typeof (window).ethereum) {
-      const ethWindow = (window).ethereum;
-      await ethWindow.send("eth_requestAccounts");
-      const web3 = new Web3(ethWindow);
-      web3StateObj.web3 = web3;
-      const chain_id = await web3.eth.net.getId();
-      web3StateObj.chain_id = chain_id;
-      const accounts = await web3.eth.getAccounts();
-      // If the investor has an account on his MetaMask, then proceeds
-      if (typeof accounts[0] !== "undefined") {
-        web3StateObj.authenticated = true;
-        web3StateObj.account = accounts[0];
-        router.push("/");
-        const balance = await web3.eth.getBalance(accounts[0]);
-        // console.log(web3.utils.fromWei(balance));
-      } else {
-        web3StateObj.authenticated = false;
-      }
-    } else {
-      window.alert("Get MetaMask !");
-    }
-    setWeb3State(web3StateObj);
-    return setLoading(false);
-  };
-  useEffect(() => {
-    if (!web3State.authenticated) {
-      loadMetaMaskData();
-    }
-  }, []);
+ 
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
