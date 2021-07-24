@@ -45,7 +45,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <hr className="md:mt-116.02px mt-50px xl:w-1170px mx-auto border-white" />
-                <footer className="font-medium text-white text-14px 2xl:text-20pxl2 mt-34px">Copyright © 2021</footer>
+                <footer className="font-medium text-white text-14px 2xl:text-20pxl2 mt-34px">Copyright © 2021 Hello Danish Bhai</footer>
             </div>
         </section>
     )
